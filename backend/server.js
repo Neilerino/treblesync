@@ -5,12 +5,18 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const logger = require('morgan');
 const http = require('http');
+const passport = require('passport');
 
 const API_PORT = 3001;
 const app = express();
 app.use(cors());
 
-const db = require('./database');
+const db = require('./config/database');
+
+//Passport
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Routes
 const spotify = require('./routes/spotify');
