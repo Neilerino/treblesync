@@ -16,6 +16,9 @@ const db = require('./database');
 const spotify = require('./routes/spotify');
 app.use('/spotify', spotify);
 
+const user = require('./routes/users');
+app.use('/user', user)
+
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
 app.use(bodyParser.urlencoded({ extended: false }));
